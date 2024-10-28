@@ -1,6 +1,6 @@
 export class ImageService {
   constructor() {
-    this._base = "/images"; // URL base de las imágenes
+    this._base = "https://rabbit-love.github.io/miku.nsfw/images"; // URL base de las imágenes
     this._images = this._getAllImages(); // Obtenemos todas las imágenes una sola vez
     this._perPage = 15; // Número de imágenes por página
   }
