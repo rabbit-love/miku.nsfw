@@ -1,0 +1,171 @@
+@font-face {
+  font-family: "Calluna";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/callunasansregular-webfont.woff")
+    format("woff");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1b252f;
+  font-family: Calluna, Arial, sans-serif;
+  min-height: 1000px;
+}
+
+h1 {
+  font-size: 1rem;
+}
+
+.columns {
+  column-width: 420px;
+  column-gap: 15px;
+  width: 100%;
+  max-width: 90%;
+  margin: 50px auto;
+}
+
+div.columns figure {
+  width: 100%;
+  margin: 0 2px 15px;
+  display: inline-block;
+  column-break-inside: avoid;
+  cursor: pointer;
+}
+
+div.columns figure img {
+  width: 100%;
+  height: auto;
+}
+
+div.columns figure figcaption {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+div.columns small {
+  font-size: 1rem;
+  float: right;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+div.columns small a {
+  color: #666;
+  text-decoration: none;
+  transition: 0.4s color;
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(33, 42, 51);
+  overflow: hidden;
+  padding: 20px 5%;
+}
+
+/* Style the links inside the navigation bar */
+.topnav .nav-item {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav .nav-item:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add an active class to highlight the current page */
+.topnav .nav-item.active {
+  background-color: rgb(33, 42, 51);
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+#notifications {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+}
+.dropdown {
+  display: inline-block;
+  /* position: relative; */
+}
+
+.dropdown-content {
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  background-color: #fff;
+  top: 75px;
+  right: 60px;
+  min-width: 260px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  display: block;
+  color: #000000;
+  padding: 5%;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  background-color: #eee;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+  max-width: 550px;
+  max-height: 575px;
+  border-radius: 10px;
+  border: 4px solid rgb(46, 56, 66);
+}
+
+.card-title {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.card-dark {
+  background-color: rgb(27, 37, 47);
+  color: white;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 750px) {
+  .columns {
+    column-gap: 0px;
+  }
+
+  .columns figure {
+    width: 100%;
+  }
+
+  .social {
+    display: none !important;
+  }
+}

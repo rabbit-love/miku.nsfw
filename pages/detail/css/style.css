@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "Calluna";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/callunasansregular-webfont.woff")
+    format("woff");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: Calluna, Arial, sans-serif;
+}
+.content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.img-load {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#img-src {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.times {
+  position: absolute;
+  top: 0;
+  color: white;
+  padding: 30px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.options {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  padding: 30px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.options svg {
+  width: 40px;
+}
+
+.description {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  padding: 30px;
+}
+
+.creator {
+  padding: 20px 0;
+  font-size: 28px;
+}
+
+.title {
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.download {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+  padding: 30px;
+  cursor: pointer;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  left: -215px;
+  min-width: 260px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  display: block;
+  color: #000000;
+  padding: 5%;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  background-color: #eee;
+}

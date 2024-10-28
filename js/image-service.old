@@ -1,0 +1,38 @@
+export class ImageService {
+  constructor() {
+    this._base = "https://hatsunemiku.site";
+  }
+
+  /**
+   * @param {number} page
+   * @returns {{
+   *   data: {
+   *     url: string,
+   *     alt: string,
+   *     id: string
+   *   }[]
+   * }}
+   */
+  async fetchImages(page) {
+    const url = `${this._base}/search.php?page=${page}`;
+
+    const result = await fetch(url, {
+      method: "GET",
+    });
+    return await result.json();
+  }
+
+  /**
+   * @param {string} id
+   * @returns {{title: string, creator: string, url: string}}
+   */
+  fetchImage(id) {
+    const url = `${this._base}/images/${id}`;
+
+    return {
+      title: id,
+      creator: "Ai Art",
+      url: url,
+    };
+  }
+}

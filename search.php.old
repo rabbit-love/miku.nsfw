@@ -1,0 +1,68 @@
+<?php
+
+class ImageGallery
+{
+    private string $directory;
+    private array $files;
+
+    public function __construct()
+    {
+        // Enable CORS
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, OPTIONS");
+        header("Access-Control-Allow-Headers: Authorization, Content-Type");
+
+        // Check if the request is an OPTIONS (preflight) request
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            http_response_code(200);
+            exit();
+        }
+
+        $this->directory = 'images/';
+    }
+
+    public function run()
+    {
+        // Get the current page from the URL
+        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+        $perPage = isset($_GET['paginate']) ? intval($_GET['paginate']) : 15;
+
+        // Calculate the start and end index for pagination
+        $start = ($page - 1) * $perPage;
+        $end = $start + $perPage;
+
+        // Get the list of files in the directory
+        $this->files = glob($this->directory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+        shuffle($this->files);
+
+        // Filter the files for the current page
+        $filesPerPage = array_slice($this->files, $start, $perPage);
+
+        // Prepare the JSON format
+        $data = [];
+
+        foreach ($filesPerPage as $file) {
+            $baseName = pathinfo($file, PATHINFO_BASENAME);
+            $url = 'https://hatsunemiku.site/' . $this->directory . urlencode($baseName); // Change the extension if it's different
+            $alt = $baseName;
+            $data[] = ['url' => $url, 'alt' => $alt, 'id' => $alt];
+        }
+
+        $response = [
+            'data' => $data,
+            'page' => $page,
+            'per_page' => $perPage,
+            'prev_page' => $page - 1,
+            'next_page' => $page + 1,
+        ];
+
+        // Return the JSON response
+        header('Content-Type: application/json');
+
+        echo json_encode($response);
+    }
+}
+
+// Create an instance of the ImageGallery class and run the script
+$imageGallery = new ImageGallery();
+$imageGallery->run();
